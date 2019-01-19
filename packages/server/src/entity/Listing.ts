@@ -1,11 +1,11 @@
-import * as bcrypt from "bcryptjs"
 import {
   Entity,
   Column,
   BaseEntity,
   PrimaryGeneratedColumn,
-  BeforeInsert,
+  ManyToOne,
 } from "typeorm"
+import {User} from "./User"
 
 @Entity("listings")
 export class Listing extends BaseEntity {
@@ -13,6 +13,9 @@ export class Listing extends BaseEntity {
 
   @Column("varchar", {length: 100})
   name: string
+
+  @Column("varchar", {length: 100})
+  category: string
 
   @Column("text") pictureUrl: string
 
@@ -31,4 +34,7 @@ export class Listing extends BaseEntity {
 
   @Column("text", {array: true})
   amenities: string[]
+
+  @ManyToOne(() => User, user => user.listings)
+  user: User
 }
