@@ -1,0 +1,23 @@
+{
+  "name": "@abb/common",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf ./dist && tsc",
+    "buildWatch": "rimraf ./dist && tsc --watch"
+  },
+  "devDependencies": {
+    "@types/yup": "^0.26.2",
+    "rimraf": "^2.6.2",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.16.0",
+    "typescript": "^3.1.6"
+  },
+  "dependencies": {
+    "global": "^4.3.2",
+    "typescript": "^3.1.6",
+    "yup": "^0.26.6"
+  }
+}
