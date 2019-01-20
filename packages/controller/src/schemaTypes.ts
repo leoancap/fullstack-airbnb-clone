@@ -4,6 +4,28 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: ForgotPasswordChangeMutation
+// ====================================================
+
+export interface ForgotPasswordChangeMutation_forgotPasswordChange {
+  path: string;
+  message: string;
+}
+
+export interface ForgotPasswordChangeMutation {
+  forgotPasswordChange: ForgotPasswordChangeMutation_forgotPasswordChange[] | null;
+}
+
+export interface ForgotPasswordChangeMutationVariables {
+  newPassword: string;
+  key: string;
+}
+
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: SendForgotPasswordEmailMutation
 // ====================================================
 
@@ -13,28 +35,6 @@ export interface SendForgotPasswordEmailMutation {
 
 export interface SendForgotPasswordEmailMutationVariables {
   email: string;
-}
-
-
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL mutation operation: RegisterMutation
-// ====================================================
-
-export interface RegisterMutation_register {
-  path: string;
-  message: string;
-}
-
-export interface RegisterMutation {
-  register: RegisterMutation_register[] | null;
-}
-
-export interface RegisterMutationVariables {
-  email: string;
-  password: string;
 }
 
 
@@ -69,21 +69,37 @@ export interface LoginMutationVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: ForgotPasswordChangeMutation
+// GraphQL mutation operation: RegisterMutation
 // ====================================================
 
-export interface ForgotPasswordChangeMutation_forgotPasswordChange {
+export interface RegisterMutation_register {
   path: string;
   message: string;
 }
 
-export interface ForgotPasswordChangeMutation {
-  forgotPasswordChange: ForgotPasswordChangeMutation_forgotPasswordChange[] | null;
+export interface RegisterMutation {
+  register: RegisterMutation_register[] | null;
 }
 
-export interface ForgotPasswordChangeMutationVariables {
-  newPassword: string;
-  key: string;
+export interface RegisterMutationVariables {
+  email: string;
+  password: string;
+}
+
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: MeQuery
+// ====================================================
+
+export interface MeQuery_me {
+  email: string;
+}
+
+export interface MeQuery {
+  me: MeQuery_me | null;
 }
 
 /* tslint:disable */
