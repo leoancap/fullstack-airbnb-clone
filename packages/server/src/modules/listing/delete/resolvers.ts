@@ -3,18 +3,20 @@ import { Listing } from "../../../entity/Listing"
 
 export const resolvers: ResolverMap = {
   Mutation: {
-    createListing: async (_, { input }, { session }) => {
+    deleteListing: async (_, { id }, { session }) => {
       console.log(session)
 
       if (!session.userId) {
         throw new Error("not authenticated")
       }
 
-      await Listing.create({
-        ...input,
-        pictureUrl: "",
-        userId: session.userId,
-      }).save()
+      const listing = await Listing.findOne({ where: { id } })
+
+      if (!listing) {
+        throw new Error("does not exist")
+      }
+
+      await Listing.remove(listing)
 
       return true
     },
