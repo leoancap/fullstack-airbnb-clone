@@ -68,7 +68,7 @@ export class CreateListingConnector extends React.PureComponent<
                   </Button>
                 ) : (
                   <Button type="primary" onClick={this.nextPage}>
-                    next page
+                    prochaine page
                   </Button>
                 )}
               </FormItem>
