@@ -1,8 +1,8 @@
 import * as React from "react"
-import {RouteComponentProps} from "react-router-dom"
-import {ChangePasswordController} from "@abb/controller"
+import { RouteComponentProps } from "react-router-dom"
+import { ChangePasswordController } from "@abb/controller"
 
-import {ChangePasswordView} from "./ui/ChangePasswordView"
+import { ChangePasswordView } from "./ui/ChangePasswordView"
 
 export class ChangePasswordConnector extends React.PureComponent<
   RouteComponentProps<{
@@ -13,23 +13,24 @@ export class ChangePasswordConnector extends React.PureComponent<
     this.props.history.push("/login")
   }
 
-  render() {
+  renderView = ({ submit }: any) => {
     const {
       match: {
-        params: {key},
+        params: { key },
       },
     } = this.props
-    console.log(key)
     return (
-      <ChangePasswordController>
-        {({submit}) => (
-          <ChangePasswordView
-            onFinish={this.onFinish}
-            token={key}
-            submit={submit}
-          />
-        )}
-      </ChangePasswordController>
+      <ChangePasswordView
+        onFinish={this.onFinish}
+        token={key}
+        submit={submit}
+      />
+    )
+  }
+
+  render() {
+    return (
+      <ChangePasswordController>{this.renderView}</ChangePasswordController>
     )
   }
 }

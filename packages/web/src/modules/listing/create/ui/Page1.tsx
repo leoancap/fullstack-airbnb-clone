@@ -4,9 +4,15 @@ import { InputField } from "../../../../modules/shared/InputField"
 
 export const Page1 = () => (
   <>
-    <Field name="name" placeholder="Name" component={InputField} />
-    <Field name="category" placeholder="Category" component={InputField} />
+    <Field label="Name" name="name" placeholder="Name" component={InputField} />
     <Field
+      label="Category"
+      name="category"
+      placeholder="Category"
+      component={InputField}
+    />
+    <Field
+      label="Category"
       name="description"
       placeholder="Description"
       component={InputField}
