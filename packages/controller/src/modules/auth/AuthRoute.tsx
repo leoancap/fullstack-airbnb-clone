@@ -10,13 +10,13 @@ export class C extends React.PureComponent<ChildProps<Props, MeQuery>> {
   renderRoute = (routeProps: RouteComponentProps<{}>) => {
     const { data, component } = this.props
 
-    if (!data || !data.loading) {
+    if (!data || data.loading) {
       // loading screnn
 
       return null
     }
 
-    if (!data.me || !data.me.email) {
+    if (!data.me) {
       // user not logged in
       return <Redirect to="/login" />
     }
