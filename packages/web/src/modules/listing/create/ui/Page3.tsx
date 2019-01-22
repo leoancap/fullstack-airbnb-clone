@@ -19,6 +19,6 @@ export const Page3 = () => (
       component={InputField}
       useNumberComponent
     />
-    <Field name="Amenities" placeholder="Amenities" component={TagField} />
+    <Field name="amenities" placeholder="Amenities" component={TagField} />
   </>
 )
