@@ -17,7 +17,7 @@
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "baseUrl": "..",
+    "baseUrl": ".",
     "types": ["jest", "node", "react", "react-dom", "react-router-dom"],
     "skipLibCheck": true
   },
