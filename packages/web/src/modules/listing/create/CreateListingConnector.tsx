@@ -6,7 +6,7 @@ import { RouteComponentProps } from "react-router-dom"
 import { Page1 } from "./ui/Page1"
 import { Page2 } from "./ui/Page2"
 import { Page3 } from "./ui/Page3"
-import { withCreateListing, NewPropsCreateListing } from "@abb/controller"
+import { withCreateListing, WithCreateListing } from "@abb/controller"
 
 const FormItem = AntForm.Item
 
@@ -29,7 +29,7 @@ interface State {
 const pages = [<Page1 />, <Page2 />, <Page3 />]
 
 class C extends React.PureComponent<
-  RouteComponentProps<{}> & NewPropsCreateListing,
+  RouteComponentProps<{}> & WithCreateListing,
   State
 > {
   state = {
