@@ -11,6 +11,7 @@ import { withCreateListing, WithCreateListing } from "@abb/controller"
 const FormItem = AntForm.Item
 
 interface FormValues {
+  picture: File | null
   name: string
   category: string
   description: string
@@ -50,6 +51,7 @@ class C extends React.PureComponent<
     return (
       <Formik<FormValues>
         initialValues={{
+          picture: null,
           name: "",
           category: "",
           description: "",
@@ -62,37 +64,39 @@ class C extends React.PureComponent<
         }}
         onSubmit={this.submit}
       >
-        {({ isSubmitting, isValid }) => (
-          <Form style={{ display: "flex" }}>
-            <div style={{ width: 400, margin: "auto" }}>
-              {pages[this.state.page]}
-              <FormItem>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "flex-end",
-                  }}
-                >
-                  {this.state.page === pages.length - 1 ? (
-                    <div>
-                      <Button
-                        type="primary"
-                        htmlType="submit"
-                        disabled={isValid || isSubmitting}
-                      >
-                        create listing
+        {({ isSubmitting, isValid, values }) =>
+          console.log(values) || (
+            <Form style={{ display: "flex" }}>
+              <div style={{ width: 400, margin: "auto" }}>
+                {pages[this.state.page]}
+                <FormItem>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "flex-end",
+                    }}
+                  >
+                    {this.state.page === pages.length - 1 ? (
+                      <div>
+                        <Button
+                          type="primary"
+                          htmlType="submit"
+                          disabled={isSubmitting}
+                        >
+                          create listing
+                        </Button>
+                      </div>
+                    ) : (
+                      <Button type="primary" onClick={this.nextPage}>
+                        next page
                       </Button>
-                    </div>
-                  ) : (
-                    <Button type="primary" onClick={this.nextPage}>
-                      next page
-                    </Button>
-                  )}
-                </div>
-              </FormItem>
-            </div>
-          </Form>
-        )}
+                    )}
+                  </div>
+                </FormItem>
+              </div>
+            </Form>
+          )
+        }
       </Formik>
     )
   }

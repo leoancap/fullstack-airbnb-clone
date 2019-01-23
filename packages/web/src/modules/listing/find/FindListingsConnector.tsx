@@ -11,14 +11,9 @@ class C extends React.PureComponent<WithFindListing> {
         key={`${l.id}-card`}
         hoverable={true}
         style={{ width: 240 }}
-        cover={
-          <img
-            alt="example"
-            src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-          />
-        }
+        cover={l.pictureUrl && <img alt="example" src={l.pictureUrl} />}
       >
-        <Meta title={l.name} />
+        <Meta title={l.name} description="yeahasdf;ljk " />
       </Card>
     ))
 
