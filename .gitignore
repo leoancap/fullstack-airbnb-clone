@@ -9,6 +9,10 @@ build/
 temp/
 dist/
 
+
+*.jpg
+*.jpeg
+*.png
 .env
 .env.*
 ormconfig.*

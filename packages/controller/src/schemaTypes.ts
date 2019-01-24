@@ -4,28 +4,6 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: ForgotPasswordChangeMutation
-// ====================================================
-
-export interface ForgotPasswordChangeMutation_forgotPasswordChange {
-  path: string;
-  message: string;
-}
-
-export interface ForgotPasswordChangeMutation {
-  forgotPasswordChange: ForgotPasswordChangeMutation_forgotPasswordChange[] | null;
-}
-
-export interface ForgotPasswordChangeMutationVariables {
-  newPassword: string;
-  key: string;
-}
-
-
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
 // GraphQL mutation operation: CreateListingMutation
 // ====================================================
 
@@ -35,6 +13,7 @@ export interface CreateListingMutation {
 
 export interface CreateListingMutationVariables {
   name: string;
+  picture?: any | null;
   category: string;
   description: string;
   price: number;
@@ -53,14 +32,42 @@ export interface CreateListingMutationVariables {
 // GraphQL query operation: FindListingsQuery
 // ====================================================
 
+export interface FindListingsQuery_findListings_owner {
+  id: string;
+  email: string;
+}
+
 export interface FindListingsQuery_findListings {
   id: string | null;
   name: string;
   pictureUrl: string;
+  owner: FindListingsQuery_findListings_owner;
 }
 
 export interface FindListingsQuery {
   findListings: FindListingsQuery_findListings[];
+}
+
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: ForgotPasswordChangeMutation
+// ====================================================
+
+export interface ForgotPasswordChangeMutation_forgotPasswordChange {
+  path: string;
+  message: string;
+}
+
+export interface ForgotPasswordChangeMutation {
+  forgotPasswordChange: ForgotPasswordChangeMutation_forgotPasswordChange[] | null;
+}
+
+export interface ForgotPasswordChangeMutationVariables {
+  newPassword: string;
+  key: string;
 }
 
 

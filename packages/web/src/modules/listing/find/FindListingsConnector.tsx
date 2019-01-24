@@ -13,7 +13,7 @@ class C extends React.PureComponent<WithFindListing> {
         style={{ width: 240 }}
         cover={l.pictureUrl && <img alt="example" src={l.pictureUrl} />}
       >
-        <Meta title={l.name} description="yeahasdf;ljk " />
+        <Meta title={l.name} description={l.owner.email} />
       </Card>
     ))
 
