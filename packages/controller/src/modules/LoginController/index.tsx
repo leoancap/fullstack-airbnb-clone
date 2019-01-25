@@ -1,30 +1,39 @@
 import * as React from "react"
-import {graphql, ChildMutateProps} from "react-apollo"
+import {
+  graphql,
+  ChildMutateProps,
+  withApollo,
+  WithApolloClient,
+} from "react-apollo"
 import gql from "graphql-tag"
 
-import {normalizeErrors} from "../../utils/normalizeErrors"
-import {LoginMutation, LoginMutationVariables} from "../../schemaTypes"
-import {NormalizedErrorMap} from "../../types/normalizedErrorMap"
+import { normalizeErrors } from "../../utils/normalizeErrors"
+import { LoginMutation, LoginMutationVariables } from "../../schemaTypes"
+import { NormalizedErrorMap } from "../../types/normalizedErrorMap"
 
 interface Props {
   onSessionId?: (sessionId: string) => void
   children: (
     data: {
       submit: (
-        values: LoginMutationVariables
+        values: LoginMutationVariables,
       ) => Promise<NormalizedErrorMap | null>
-    }
+    },
   ) => JSX.Element | null
 }
 
 class C extends React.PureComponent<
-  ChildMutateProps<Props, LoginMutation, LoginMutationVariables>
+  ChildMutateProps<
+    WithApolloClient<Props>,
+    LoginMutation,
+    LoginMutationVariables
+  >
 > {
   submit = async (values: LoginMutationVariables) => {
     console.log(values)
     const {
       data: {
-        login: {errors, sessionId},
+        login: { errors, sessionId },
       },
     } = await this.props.mutate({
       variables: values,
@@ -39,11 +48,13 @@ class C extends React.PureComponent<
       this.props.onSessionId(sessionId)
     }
 
+    this.props.client.resetStore()
+
     return null
   }
 
   render() {
-    return this.props.children({submit: this.submit})
+    return this.props.children({ submit: this.submit })
   }
 }
 
@@ -63,4 +74,4 @@ export const LoginController = graphql<
   Props,
   LoginMutation,
   LoginMutationVariables
->(loginMutation)(C)
+>(loginMutation)(withApollo<Props>(C as any))
