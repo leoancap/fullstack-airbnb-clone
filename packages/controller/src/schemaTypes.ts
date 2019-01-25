@@ -4,6 +4,28 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: ForgotPasswordChangeMutation
+// ====================================================
+
+export interface ForgotPasswordChangeMutation_forgotPasswordChange {
+  path: string;
+  message: string;
+}
+
+export interface ForgotPasswordChangeMutation {
+  forgotPasswordChange: ForgotPasswordChangeMutation_forgotPasswordChange[] | null;
+}
+
+export interface ForgotPasswordChangeMutationVariables {
+  newPassword: string;
+  key: string;
+}
+
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: CreateListingMutation
 // ====================================================
 
@@ -46,28 +68,6 @@ export interface FindListingsQuery_findListings {
 
 export interface FindListingsQuery {
   findListings: FindListingsQuery_findListings[];
-}
-
-
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL mutation operation: ForgotPasswordChangeMutation
-// ====================================================
-
-export interface ForgotPasswordChangeMutation_forgotPasswordChange {
-  path: string;
-  message: string;
-}
-
-export interface ForgotPasswordChangeMutation {
-  forgotPasswordChange: ForgotPasswordChangeMutation_forgotPasswordChange[] | null;
-}
-
-export interface ForgotPasswordChangeMutationVariables {
-  newPassword: string;
-  key: string;
 }
 
 
@@ -149,6 +149,18 @@ export interface MeQuery_me {
 
 export interface MeQuery {
   me: MeQuery_me | null;
+}
+
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: LogoutMutation
+// ====================================================
+
+export interface LogoutMutation {
+  logout: boolean | null;
 }
 
 /* tslint:disable */
