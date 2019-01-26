@@ -7,6 +7,7 @@ import { withCreateListing, WithCreateListing } from "@abb/controller"
 import { RouteComponentProps } from "react-router-native"
 import { Card, Button } from "react-native-elements"
 import { InputField } from "../../shared/InputField"
+import { CheckboxGroupField } from "../../shared/CheckBoxGroupField"
 
 interface FormValues {
   picture: null
@@ -50,75 +51,82 @@ class C extends React.PureComponent<
         }}
         onSubmit={this.submit}
       >
-        {({ handleSubmit }) => (
-          <View
-            style={{
-              flex: 1,
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <ScrollView style={{ padding: 20, marginBottom: 20 }}>
-              <Text style={{ fontSize: 30, marginBottom: 10 }}>
-                Create Listing
-              </Text>
-              <Field
-                label="Name"
-                name="name"
-                placeholder="Name"
-                component={InputField}
-              />
-              <Field
-                label="Category"
-                name="category"
-                placeholder="Category"
-                component={InputField}
-              />
-              <Field
-                label="Category"
-                name="description"
-                placeholder="Description"
-                component={InputField}
-              />
-              <Field
-                label="Price"
-                name="price"
-                placeholder="Price"
-                component={InputField}
-                useNumberComponent
-              />
-              <Field
-                label="Beds"
-                name="beds"
-                placeholder="Beds"
-                component={InputField}
-                useNumberComponent
-              />
-              <Field
-                label="Guests"
-                name="guests"
-                placeholder="Guests"
-                component={InputField}
-                useNumberComponent
-              />
-              <Field
-                label="Latitude"
-                name="latitude"
-                placeholder="Latitude"
-                component={InputField}
-                useNumberComponent
-              />
-              <Field
-                label="Longitude"
-                name="longitude"
-                placeholder="Longitude"
-                component={InputField}
-                useNumberComponent
-              />
-              <Button onPress={handleSubmit} title="save listing" />
-            </ScrollView>
-          </View>
-        )}
+        {({ handleSubmit, values }) =>
+          console.log(values) || (
+            <View
+              style={{
+                flex: 1,
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <ScrollView style={{ padding: 20, marginBottom: 20 }}>
+                <Text style={{ fontSize: 30, marginBottom: 10 }}>
+                  Create Listing
+                </Text>
+                <Field
+                  label="Name"
+                  name="name"
+                  placeholder="Name"
+                  component={InputField}
+                />
+                <Field
+                  label="Category"
+                  name="category"
+                  placeholder="Category"
+                  component={InputField}
+                />
+                <Field
+                  label="Category"
+                  name="description"
+                  placeholder="Description"
+                  component={InputField}
+                />
+                <Field
+                  label="Price"
+                  name="price"
+                  placeholder="Price"
+                  component={InputField}
+                  keyboardType="numeric"
+                />
+                <Field
+                  label="Beds"
+                  name="beds"
+                  placeholder="Beds"
+                  component={InputField}
+                  keyboardType="numeric"
+                />
+                <Field
+                  label="Guests"
+                  name="guests"
+                  placeholder="Guests"
+                  component={InputField}
+                  keyboardType="numeric"
+                />
+                <Field
+                  label="Latitude"
+                  name="latitude"
+                  placeholder="Latitude"
+                  component={InputField}
+                  keyboardType="numeric"
+                />
+                <Field
+                  label="Longitude"
+                  name="longitude"
+                  placeholder="Longitude"
+                  component={InputField}
+                  keyboardType="numeric"
+                />
+                <Field
+                  name="amenities"
+                  options={["pool", "soccer", "bath"]}
+                  component={CheckboxGroupField as any}
+                />
+                <Button onPress={handleSubmit} title="save listing" />
+              </ScrollView>
+            </View>
+          )
+        }
       </Formik>
     )
   }
