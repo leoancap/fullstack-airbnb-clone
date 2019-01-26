@@ -8,6 +8,7 @@ import { RouteComponentProps } from "react-router-native"
 import { Card, Button } from "react-native-elements"
 import { InputField } from "../../shared/InputField"
 import { CheckboxGroupField } from "../../shared/CheckBoxGroupField"
+import { PictureField } from "../../shared/PictureField"
 
 interface FormValues {
   picture: null
@@ -26,12 +27,20 @@ class C extends React.PureComponent<
   RouteComponentProps<{}> & WithCreateListing
 > {
   submit = async (
-    values: FormValues,
-    // { setSubmitting }: FormikActions<FormValues>,
+    { price, beds, guests, latitude, longitude, ...values }: FormValues,
+    { setSubmitting }: FormikActions<FormValues>,
   ) => {
     console.log(values)
-    // await this.props.createListing(values)
-    // setSubmitting(false)
+    await this.props.createListing({
+      ...values,
+
+      price: parseInt(price, 10),
+      beds: parseInt(beds, 10),
+      guests: parseInt(guests, 10),
+      latitude: parseFloat(latitude, 10),
+      longitude: parseFloat(longitude, 10),
+    })
+    setSubmitting(false)
   }
 
   render() {
@@ -60,7 +69,7 @@ class C extends React.PureComponent<
                 justifyContent: "center",
               }}
             >
-              <ScrollView style={{ padding: 20, marginBottom: 20 }}>
+              <ScrollView style={{ marginBottom: 20 }}>
                 <Text style={{ fontSize: 30, marginBottom: 10 }}>
                   Create Listing
                 </Text>
@@ -69,6 +78,11 @@ class C extends React.PureComponent<
                   name="name"
                   placeholder="Name"
                   component={InputField}
+                />
+                <Field
+                  name="picture"
+                  title="pick a picture"
+                  component={PictureField as any}
                 />
                 <Field
                   label="Category"
